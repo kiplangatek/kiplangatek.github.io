@@ -4,14 +4,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Kiplangat Edwin - Portfolio</title>
+
+        <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-            html {
-                scroll-behavior: smooth;
-                scroll-padding-top: 90px;
-                /* Adjust based on header height */
-            }
-        </style>
+
+        <!-- Google Fonts: Inter Variable -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Ionicons -->
         <script
             type="module"
             src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -20,10 +25,30 @@
             nomodule
             src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
         ></script>
+
+        <style>
+            /* Enable smooth scrolling and account for fixed header */
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 90px; /* Adjust based on header height */
+            }
+
+            /* Apply Inter variable font to body */
+            body {
+                font-family: "Inter", sans-serif;
+                font-optical-sizing: auto; /* variable font features */
+                font-weight: 400; /* default weight */
+            }
+
+            /* Optional: Tailwind class override for font */
+            .inter-body {
+                font-family: "Inter", sans-serif;
+            }
+        </style>
     </head>
 
     <body
-        class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-slate-50 min-h-[200vh] pt-24"
+        class="inter-body bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-slate-50 min-h-[200vh] pt-24"
     >
         <header
             id="header"
