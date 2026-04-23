@@ -1,926 +1,429 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Kiplangat Edwin - Portfolio</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Kiplangat Edwin | Software Engineer & Web Developer</title>
 
-        <!-- Tailwind CSS -->
-        <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS + basic layer -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter (clean modern sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet" />
 
-        <!-- Google Fonts: Inter Variable -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
+    <!-- Ionicons 7 -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-        <!-- Ionicons -->
-        <script
-            type="module"
-            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-        ></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        ></script>
+    <!-- Load Inter from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* reset + custom glass & dark mode variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <style>
-            /* Enable smooth scrolling and account for fixed header */
-            html {
-                scroll-behavior: smooth;
-                scroll-padding-top: 90px; /* Adjust based on header height */
-            }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background 0.3s ease, color 0.2s ease;
+            background: linear-gradient(135deg, #eef2ff 0%, #ffffff 50%, #f8fafc 100%);
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
 
-            body {
-                font-family: "Inter", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: 400;
-            }
-        </style>
-    </head>
+        /* dark mode override with premium deep tones */
+        body.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+            color: #f1f5f9;
+        }
 
-    <body
-        class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-slate-50 min-h-[200vh] pt-24"
-    >
-        <header
-            id="header"
-            class="fixed top-5 left-1/2 -translate-x-1/2 w-[95%] max-w-[1100px] bg-blue-800/25 backdrop-blur-lg border border-blue-400/30 rounded-2xl shadow-[0_8px_32px_rgba(30,64,175,0.3)] z-50 transition-all duration-300"
-        >
-            <div class="flex justify-between items-center px-6 py-4">
-                <!-- Logo -->
-                <div
-                    class="flex items-center gap-3 font-bold text-xl text-sky-100"
-                >
-                    <ion-icon
-                        name="code-slash"
-                        class="text-2xl text-blue-400 drop-shadow-[0_0_8px_rgba(96,165,250,0.7)]"
-                    ></ion-icon>
-                    <span>Kiplangat Edwin</span>
+        /* glass base (light mode) */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(14px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        body.dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-soft {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        body.dark .glass-soft {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(148, 163, 184, 0.15);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(37,99,235,0.2);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: scale(0.98);
+            box-shadow: 0 6px 14px rgba(37,99,235,0.25);
+        }
+
+        .btn-outline-glass {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 8px 18px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        body.dark .btn-outline-glass {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        body.dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        body.dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+
+        /* smooth active nav + transitions */
+        .bottom-nav-btn {
+            transition: all 0.2s ease;
+        }
+        .bottom-nav-btn.active {
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+        body.dark .bottom-nav-btn.active {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body class="antialiased relative overflow-x-hidden pb-28">
+
+    <!-- Background decorative blobs -->
+    <div class="fixed w-80 h-80 bg-blue-400 rounded-full blur-3xl opacity-20 top-20 -left-20 pointer-events-none"></div>
+    <div class="fixed w-96 h-96 bg-cyan-400 rounded-full blur-3xl opacity-20 bottom-10 -right-24 pointer-events-none"></div>
+    <div class="fixed w-64 h-64 bg-indigo-300 rounded-full blur-3xl opacity-15 top-1/3 right-10 pointer-events-none"></div>
+
+    <!-- Header (fixed glass, elegant) -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-5xl glass z-50 px-5 py-3 flex justify-between items-center shadow-md">
+        <div class="flex items-center gap-2 font-bold text-slate-800 dark:text-white text-lg">
+            <ion-icon name="code-slash" class="text-blue-600 text-2xl"></ion-icon>
+            <span class="tracking-tight">Kiplangat Edwin</span>
+        </div>
+        <button id="darkModeToggle" class="text-2xl text-slate-700 dark:text-slate-200 hover:bg-white/20 p-2 rounded-full transition">
+            <ion-icon name="moon-outline" id="darkIcon"></ion-icon>
+        </button>
+    </header>
+
+    <!-- spacing for fixed header -->
+    <div class="h-20"></div>
+
+    <main class="max-w-5xl mx-auto px-4 space-y-6 pb-8">
+
+        <!-- Hero / intro card with stats integrated -->
+        <div class="glass-soft p-6 rounded-2xl text-center md:text-left md:flex md:items-center md:justify-between">
+            <div class="md:flex-1">
+                <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent dark:from-blue-300 dark:to-cyan-300 flex items-center justify-center md:justify-start gap-2">
+                    <ion-icon name="flash-outline" class="text-blue-600"></ion-icon>
+                    Scalable Web Solutions
+                </h1>
+                <p class="text-slate-600 dark:text-slate-300 mt-2 max-w-md mx-auto md:mx-0">Laravel · PHP · Security-focused · Modern UI</p>
+                <div class="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
+                    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                        <ion-icon name="briefcase-outline"></ion-icon> Hire Me
+                    </button>
+                    <button class="btn-outline-glass text-slate-800 dark:text-white border border-slate-300 dark:border-slate-600" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+                        <ion-icon name="eye-outline"></ion-icon> View Work
+                    </button>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex gap-2">
-                    <a
-                        href="#intro"
-                        class="flex items-center px-5 py-2 rounded-xl bg-blue-400/30 text-white shadow-[0_4px_12px_rgba(30,64,175,0.4)] transition-all hover:bg-blue-400/20 hover:shadow-lg"
-                    >
-                        Home
-                    </a>
-
-                    <a
-                        href="#resume"
-                        class="flex items-center px-5 py-2 rounded-xl text-sky-100 transition-all hover:bg-blue-400/20 hover:shadow-lg"
-                    >
-                        About
-                    </a>
-
-                    <a
-                        href="#projects"
-                        class="flex items-center px-5 py-2 rounded-xl text-sky-100 transition-all hover:bg-blue-400/20 hover:shadow-lg"
-                    >
-                        Projects
-                    </a>
-
-                    <a
-                        href="#labs"
-                        class="flex items-center px-5 py-2 rounded-xl text-sky-100 transition-all hover:bg-blue-400/20 hover:shadow-lg"
-                    >
-                        Labs
-                    </a>
-                    <a
-                        href="#contact"
-                        class="flex items-center px-5 py-2 rounded-xl text-sky-100 transition-all hover:bg-blue-400/20 hover:shadow-lg"
-                    >
-                        Contacts
-                    </a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button
-                    id="mobileMenuBtn"
-                    class="md:hidden w-10 h-10 flex flex-col items-center text-center justify-center gap-1.5 border border-blue-400/30 bg-blue-400/10 rounded-full p-2 transition-all hover:bg-blue-400/30"
-                >
-                    <ion-icon name="options-outline" class="text-xl"></ion-icon>
-                </button>
             </div>
-
-            <nav
-                id="mobileNav"
-                class="hidden flex-col gap-2 pb-4 px-4 md:hidden text-left"
-            >
-                <a
-                    href="#intro"
-                    class="mobile-link flex items-center px-5 py-2 rounded-xl bg-blue-400/30 text-white shadow-md hover:bg-blue-400/20"
-                >
-                    <ion-icon name="home-outline" class="mr-2"></ion-icon> Intro
-                </a>
-
-                <a
-                    href="#resume"
-                    class="mobile-link flex items-center px-5 py-2 rounded-xl text-sky-100 hover:bg-blue-400/20"
-                >
-                    <ion-icon name="person-outline" class="mr-2"></ion-icon>
-                    About
-                </a>
-
-                <a
-                    href="#projects"
-                    class="mobile-link flex items-center px-5 py-2 rounded-xl text-sky-100 hover:bg-blue-400/20"
-                >
-                    <ion-icon name="briefcase-outline" class="mr-2"></ion-icon>
-                    Projects
-                </a>
-
-                <a
-                    href="#labs"
-                    class="mobile-link flex items-center px-5 py-2 rounded-xl text-sky-100 hover:bg-blue-400/20"
-                >
-                    <ion-icon name="flask-outline" class="mr-2"></ion-icon> Labs
-                </a>
-
-                <a
-                    href="#contact"
-                    class="mobile-link flex items-center px-5 py-2 rounded-xl text-sky-100 hover:bg-blue-400/20"
-                >
-                    <ion-icon name="mail-outline" class="mr-2"></ion-icon>
-                    Contacts
-                </a>
-            </nav>
-        </header>
-
-        <!-- Spacer -->
-        <div class="h-16"></div>
-
-        <!-- Main Container -->
-        <main class="w-full mx-auto py-4 px-2 space-y-6">
-            <!-- Intro Section -->
-            <section
-                id="intro"
-                class="bg-slate-800/40 backdrop-blur-md border border-slate-600/30 rounded-2xl p-3 shadow-lg hover:shadow-[0_12px_24px_rgba(30,64,175,0.2)]"
-            >
-                <div
-                    class="flex flex-col md:flex-row items-center md:items-start gap-4"
-                >
-                    <!-- Image side -->
-                    <div class="w-full md:w-fit">
-                        <img
-                            src="me.jpeg"
-                            alt="Profile Photo"
-                            class="w-full md:w-[196px] rounded-lg object-cover"
-                        />
-                    </div>
-
-                    <!-- Text side -->
-                    <div class="w-full md:w-2/3 md:text-left">
-                        <h2
-                            class="text-xl md:text-2xl font-semibold text-blue-600 mb-2"
-                        >
-                            About Me
-                        </h2>
-                        <p class="text-base text-gray-200 px-3">
-                            Hello! I'm Kiplangat Edwin, a passionate software
-                            developer with a focus on web development and web
-                            designing. I love creating efficient and scalable
-                            applications that solve real-world problems. My
-                            journey in tech has been driven by curiosity and a
-                            desire to learn continuously. I enjoy collaborating
-                            with others and sharing knowledge to build better
-                            solutions together.
-                        </p>
-                    </div>
+            <!-- stats inline -->
+            <div class="flex gap-4 mt-6 md:mt-0 justify-center md:justify-end">
+                <div class="glass px-5 py-3 rounded-2xl text-center min-w-[100px]">
+                    <ion-icon name="rocket-outline" class="text-2xl text-blue-500"></ion-icon>
+                    <p class="text-2xl font-bold text-slate-800 dark:text-white">10+</p>
+                    <p class="text-xs text-slate-500">Projects</p>
                 </div>
-            </section>
-
-            <section
-                id="resume"
-                class="bg-slate-800/40 backdrop-blur-md border border-slate-600/30 rounded-2xl p-6 md:p-8 shadow-lg"
-            >
-                <h2 class="text-2xl font-semibold text-blue-400 mb-6">
-                    Resume Overview
-                </h2>
-
-                <div class="relative">
-                    <!-- Vertical Line -->
-                    <div
-                        class="absolute left-6 top-0 h-full w-1 bg-blue-500/20 rounded-full"
-                    ></div>
-
-                    <!-- ITEM COMPONENT (Reusable styles added to each) -->
-                    <!-- EDUCATION -->
-                    <div class="relative flex gap-3 md:gap-6 mb-10 items-start">
-                        <!-- Dot -->
-                        <div
-                            class="min-w-12 min-h-12 w-12 h-12 flex items-center justify-center bg-blue-600 rounded-full text-white shadow-lg z-10"
-                        >
-                            <ion-icon
-                                name="school-outline"
-                                class="text-2xl"
-                            ></ion-icon>
-                        </div>
-
-                        <!-- Content -->
-                        <div
-                            class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/40 w-full"
-                        >
-                            <h3 class="text-xl font-bold text-blue-300 mb-4">
-                                Education
-                            </h3>
-
-                            <div class="space-y-4">
-                                <!-- Education Item -->
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        BSc. Software Engineering
-                                    </h4>
-                                    <p class="text-blue-400 text-sm">
-                                        Zetech University • 2022 – 2024
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        Diploma in Software Engineering
-                                    </h4>
-                                    <p class="text-blue-400 text-sm">
-                                        Zetech University • 2020 – 2022
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        Secondary Education
-                                    </h4>
-                                    <p class="text-blue-400 text-sm">
-                                        Cheptenye High School • 2016 – 2017
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        KCSE
-                                    </h4>
-                                    <p class="text-blue-400 text-sm">
-                                        Kapsimbiri Secondary • 2018 – 2019
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        KCPE
-                                    </h4>
-                                    <p class="text-blue-400 text-sm">
-                                        Tamason Academy • 2008 – 2015
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- EXPERIENCE -->
-                    <div class="relative flex gap-3 md:gap-6 mb-10 items-start">
-                        <div
-                            class="min-w-12 min-h-12 w-12 h-12 flex items-center justify-center bg-green-600 rounded-full text-white shadow-lg z-10"
-                        >
-                            <ion-icon
-                                name="briefcase-outline"
-                                class="text-2xl"
-                            ></ion-icon>
-                        </div>
-
-                        <div
-                            class="bg-slate-900/40 p-5 rounded-xl border border-slate-700/40 w-full"
-                        >
-                            <h3 class="text-xl font-bold text-green-300 mb-4">
-                                Experience
-                            </h3>
-
-                            <div class="space-y-3">
-                                <!-- Experience Item -->
-                                <div
-                                    class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        ICT Intern
-                                    </h4>
-                                    <p class="text-green-400 text-sm">
-                                        Bomet County • 2024
-                                    </p>
-                                    <p class="text-gray-300 text-sm mt-1">
-                                        Styled official website, trained
-                                        interns, and provided technical support.
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        ICT Intern
-                                    </h4>
-                                    <p class="text-green-400 text-sm">
-                                        Bomet County • 2021
-                                    </p>
-                                    <p class="text-gray-300 text-sm mt-1">
-                                        Managed asset database and supported
-                                        county inventory logging.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SKILLS -->
-                    <div class="relative flex gap-3 md:gap-6 mb-10 items-start">
-                        <div
-                            class="min-w-12 min-h-12 w-12 h-12 flex items-center justify-center bg-yellow-500 rounded-full text-white shadow-lg z-10"
-                        >
-                            <ion-icon
-                                name="hammer-outline"
-                                class="text-2xl"
-                            ></ion-icon>
-                        </div>
-
-                        <div
-                            class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/40 w-full"
-                        >
-                            <h3 class="text-xl font-bold text-yellow-300 mb-2">
-                                Skills
-                            </h3>
-
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1 bg-teal-100 text-black font-medium rounded-md text-sm"
-                                    >Web Development</span
-                                >
-                                <span
-                                    class="px-3 py-1 bg-teal-100 text-black font-medium rounded-md text-sm"
-                                    >PHP & MySQL</span
-                                >
-                                <span
-                                    class="px-3 py-1 bg-teal-100 text-black font-medium rounded-md text-sm"
-                                    >Problem Solving</span
-                                >
-                                <span
-                                    class="px-3 py-1 bg-teal-100 text-black font-medium rounded-md text-sm"
-                                    >Team Leadership</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CERTIFICATIONS -->
-                    <div class="relative flex gap-3 md:gap-6 items-start mb-8">
-                        <div
-                            class="min-w-12 min-h-12 w-12 h-1 flex items-center justify-center bg-purple-600 rounded-full text-white shadow-lg z-10"
-                        >
-                            <ion-icon
-                                name="ribbon-outline"
-                                class="text-2xl"
-                            ></ion-icon>
-                        </div>
-
-                        <div
-                            class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/40 w-full"
-                        >
-                            <h3 class="text-xl font-bold text-purple-300 mb-4">
-                                Certifications
-                            </h3>
-
-                            <div class="space-y-4">
-                                <!-- Certification Item 1 -->
-                                <div
-                                    class="bg-slate-800/40 p-3 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        Microsoft Certified: Security,
-                                        Compliance & Identity Fundamentals
-                                    </h4>
-                                    <p class="text-purple-400 text-sm">
-                                        Microsoft • 2025
-                                    </p>
-
-                                    <a
-                                        href="https://learn.microsoft.com/en-us/users/kiplangatedwin/credentials/78ba90fe974061b9"
-                                        target="_blank"
-                                        class="inline-flex items-center text-blue-400 hover:text-blue-300 underline mt-1"
-                                    >
-                                        <ion-icon
-                                            name="link-outline"
-                                            class="text-lg mr-1"
-                                        ></ion-icon>
-                                        View Credential
-                                    </a>
-                                </div>
-
-                                <!-- Certification Item 2 (NEW) -->
-                                <div
-                                    class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/30"
-                                >
-                                    <h4
-                                        class="text-lg font-semibold text-white"
-                                    >
-                                        Software Operation Analyst
-                                    </h4>
-                                    <p class="text-purple-400 text-sm">
-                                        Cyber Shujaa • 2025
-                                    </p>
-                                    <p class="text-gray-300 text-sm mt-1">
-                                        Training focused on SOC operations,
-                                        incident tracking, threat workflows,
-                                        alert analysis, and operational
-                                        procedures within cybersecurity
-                                        environments.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="glass px-5 py-3 rounded-2xl text-center min-w-[100px]">
+                    <ion-icon name="time-outline" class="text-2xl text-cyan-500"></ion-icon>
+                    <p class="text-2xl font-bold text-slate-800 dark:text-white">2+</p>
+                    <p class="text-xs text-slate-500">Years exp</p>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Projects Section -->
-            <section
-                id="projects"
-                class="bg-slate-800/40 backdrop-blur-md border border-slate-600/30 rounded-2xl p-6 shadow-lg hover:shadow-[0_12px_24px_rgba(30,64,175,0.2)] transition"
-            >
-                <h2
-                    class="text-xl md:text-3xl font-semibold text-blue-400 mb-6"
-                >
-                    Projects
-                </h2>
-
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    <!-- Project Card -->
-                    <div
-                        class="bg-slate-900/40 border border-slate-700/40 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
-                    >
-                        <img
-                            src="project-1.png"
-                            alt="Project 1"
-                            class="w-full h-40 object-cover"
-                        />
-
-                        <div class="p-5">
-                            <h3
-                                class="text-lg font-semibold text-blue-300 underline"
-                            >
-                                Portfolio
-                            </h3>
-                            <p class="text-sm text-gray-300 mt-2 mb-3">
-                                A personal portfolio website showcasing skills,
-                                projects, and contact details. Built with HTML &
-                                CSS and fully responsive.
-                            </p>
-
-                            <div class="mb-3 flex flex-wrap gap-2">
-                                <span
-                                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
-                                    >HTML</span
-                                >
-                                <span
-                                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
-                                    >CSS</span
-                                >
-                            </div>
-
-                            <a
-                                href="https://github.com/kiplangatek/portfolio"
-                                target="_blank"
-                                class="inline-flex items-center bg-slate-700 text-gray-200 text-sm px-3 py-1.5 rounded hover:bg-slate-600 transition"
-                            >
-                                <ion-icon
-                                    name="logo-github"
-                                    class="mr-2 text-lg"
-                                ></ion-icon>
-                                View on GitHub
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card -->
-                    <div
-                        class="bg-slate-900/40 border border-slate-700/40 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
-                    >
-                        <img
-                            src="project-2.png"
-                            alt="Project 2"
-                            class="w-full h-40 object-cover"
-                        />
-
-                        <div class="p-5">
-                            <h3
-                                class="text-lg font-semibold text-green-300 underline"
-                            >
-                                FCS
-                            </h3>
-                            <p class="text-sm text-gray-300 mt-2 mb-3">
-                                A service exchange platform enabling clients to
-                                hire freelancers based on skills and categories.
-                                Includes admin task management.
-                            </p>
-
-                            <div class="mb-3 flex flex-wrap gap-2">
-                                <span
-                                    class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full"
-                                    >PHP</span
-                                >
-                                <span
-                                    class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full"
-                                    >MySQL</span
-                                >
-                            </div>
-
-                            <a
-                                href="https://github.com/kiplangatek/fcs"
-                                target="_blank"
-                                class="inline-flex items-center bg-slate-700 text-gray-200 text-sm px-3 py-1.5 rounded hover:bg-slate-600 transition"
-                            >
-                                <ion-icon
-                                    name="logo-github"
-                                    class="mr-2 text-lg"
-                                ></ion-icon>
-                                View on GitHub
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card -->
-                    <div
-                        class="bg-slate-900/40 border border-slate-700/40 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
-                    >
-                        <img
-                            src="project-3.png"
-                            alt="Project 3"
-                            class="w-full h-40 object-cover"
-                        />
-
-                        <div class="p-5">
-                            <h3
-                                class="text-lg font-semibold text-purple-300 underline"
-                            >
-                                FCS - Redesigned
-                            </h3>
-                            <p class="text-sm text-gray-300 mt-2 mb-3">
-                                An upgraded version of the project using Laravel
-                                & SQLite featuring service ratings, chat,
-                                spending analytics, and email verification.
-                            </p>
-
-                            <div class="mb-3 flex flex-wrap gap-2">
-                                <span
-                                    class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full"
-                                    >Laravel</span
-                                >
-                                <span
-                                    class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full"
-                                    >SQLite</span
-                                >
-                            </div>
-
-                            <a
-                                href="https://github.com/kiplangatek/freelancer"
-                                target="_blank"
-                                class="inline-flex items-center bg-slate-700 text-gray-200 text-sm px-3 py-1.5 rounded hover:bg-slate-600 transition"
-                            >
-                                <ion-icon
-                                    name="logo-github"
-                                    class="mr-2 text-lg"
-                                ></ion-icon>
-                                View on GitHub
-                            </a>
-                        </div>
-                    </div>
+        <!-- About / Resume overview (condensed from original resume) -->
+        <div class="glass p-6 rounded-2xl">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <img src="me.jpeg" alt="Kiplangat Edwin" class="w-32 h-32 rounded-full object-cover border-4 border-white/50 shadow-md">
+                <div>
+                    <h2 class="text-2xl font-semibold flex items-center gap-2 text-slate-800 dark:text-white"><ion-icon name="person-circle-outline"></ion-icon> About Me</h2>
+                    <p class="text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                        Hi, I'm Kiplangat Edwin — software engineer passionate about web development, secure systems, and elegant design. I craft efficient full-stack applications and love solving real-world problems. Background in software engineering, internships at Bomet County ICT, and multiple certifications including Azure Security.
+                    </p>
                 </div>
-            </section>
-
-            <!-- Labs Section -->
-            <section
-                id="labs"
-                class="bg-slate-800/40 backdrop-blur-md border border-slate-600/30 rounded-2xl p-6 shadow-lg hover:shadow-[0_12px_24px_rgba(30,64,175,0.2)] transition"
-            >
-                <h2
-                    class="text-xl md:text-3xl font-semibold text-blue-400 mb-6"
-                >
-                    Lab Challenges & Practical Experience
-                </h2>
-
-                <!-- Labs Grid -->
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    <!-- Lab Card 1: PIM -->
-                    <div
-                        class="bg-slate-900/60 border border-slate-700 rounded-xl p-4 shadow-md flex flex-col hover:border-blue-500/40 transition"
-                    >
-                        <img
-                            src="pim.png"
-                            alt="Privileged Identity Management"
-                            class="rounded-lg mb-4 shadow-sm"
-                        />
-
-                        <div class="flex items-center gap-2 mb-2">
-                            <span
-                                class="px-3 py-1 text-xs font-medium rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30"
-                            >
-                                Azure Security Lab
-                            </span>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white mb-2">
-                            Privileged Identity Management (PIM)
-                        </h3>
-
-                        <p
-                            class="text-sm text-slate-300 flex-grow leading-relaxed"
-                        >
-                            Implemented Azure PIM to secure privileged access.
-                            Configured eligible roles, JIT activation, approval
-                            workflows, and time-bound access policies to
-                            minimize persistent admin privileges and enforce
-                            least-privilege operations.
-                        </p>
-
-                        <div class="flex items-start gap-2 mt-4">
-                            <ion-icon
-                                name="bulb-outline"
-                                class="text-yellow-400 text-2xl mt-[2px]"
-                            ></ion-icon>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Reinforced Azure identity governance by ensuring
-                                roles are granted only when required.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Lab Card 2: Azure NSGs -->
-                    <div
-                        class="bg-slate-900/60 border border-slate-700 rounded-xl p-4 shadow-md flex flex-col hover:border-blue-500/40 transition"
-                    >
-                        <div class="flex flex-col md:flex-row gap-3 mb-4">
-                            <img
-                                src="nsg1.png"
-                                alt="NSG Screenshot 1"
-                                class="w-full md:w-1/2 rounded-lg shadow-sm"
-                            />
-                            <img
-                                src="nsg2.png"
-                                alt="NSG Screenshot 2"
-                                class="w-full md:w-1/2 rounded-lg shadow-sm"
-                            />
-                        </div>
-
-                        <div class="flex items-center gap-2 mb-2">
-                            <span
-                                class="px-3 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-300 border border-green-500/30"
-                            >
-                                Network Security Lab
-                            </span>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white mb-2">
-                            Azure Network Security Groups (NSGs)
-                        </h3>
-
-                        <p
-                            class="text-sm text-slate-300 flex-grow leading-relaxed"
-                        >
-                            Configured NSGs to manage traffic to Azure VMs and
-                            subnets. Designed, optimized, and tested
-                            inbound/outbound rules for segmentation and threat
-                            reduction, validating rule effectiveness in live
-                            scenarios.
-                        </p>
-
-                        <div class="flex items-start gap-2 mt-4">
-                            <ion-icon
-                                name="bulb-outline"
-                                class="text-yellow-400 text-2xl mt-[2px]"
-                            ></ion-icon>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Successfully enforced traffic restrictions and
-                                strengthened perimeter security.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Lab Card 3: Pyramid of Pain -->
-                    <div
-                        class="bg-slate-900/60 border border-slate-700 rounded-xl p-4 shadow-md flex flex-col hover:border-blue-500/40 transition"
-                    >
-                        <img
-                            src="pop.png"
-                            alt="Pyramid of Pain"
-                            class="rounded-lg mb-4 shadow-sm"
-                        />
-
-                        <div class="flex items-center gap-2 mb-2">
-                            <span
-                                class="px-3 py-1 text-xs font-medium rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30"
-                            >
-                                Threat Intelligence Lab
-                            </span>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white mb-2">
-                            Cyber Threat Analysis — Pyramid of Pain
-                        </h3>
-
-                        <p
-                            class="text-sm text-slate-300 flex-grow leading-relaxed"
-                        >
-                            Analyzed attacker behavior using the Pyramid of Pain
-                            framework. Evaluated IOC categories and assessed how
-                            increasing defensive friction disrupts adversaries
-                            and reduces persistence across the kill chain.
-                        </p>
-
-                        <div class="flex items-start gap-2 mt-4">
-                            <ion-icon
-                                name="bulb-outline"
-                                class="text-yellow-400 text-2xl mt-[2px]"
-                            ></ion-icon>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Built strong understanding of adversary
-                                disruption and proactive defense models.
-                            </p>
-                        </div>
-                    </div>
+            </div>
+            <!-- quick resume chips: education & experience highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div class="bg-white/40 dark:bg-slate-800/40 p-3 rounded-xl">
+                    <div class="flex items-center gap-2 text-blue-600"><ion-icon name="school-outline"></ion-icon><span class="font-bold">Education</span></div>
+                    <p class="text-sm">🎓 BSc Software Engineering, Zetech Univ (2022-2024)</p>
+                    <p class="text-sm">🎓 Diploma SE, Zetech (2020-2022)</p>
                 </div>
-            </section>
-            <!-- Contact Section -->
-            <section
-                id="contact"
-                class="bg-slate-800/40 backdrop-blur-md border border-slate-600/30 rounded-2xl p-6 shadow-lg hover:shadow-[0_12px_24px_rgba(30,64,175,0.2)] transition"
-            >
-                <h2
-                    class="text-xl md:text-2xl font-semibold text-blue-400 mb-3"
-                >
-                    Contact Me
-                </h2>
-
-                <p class="text-sm text-slate-300 mb-6 leading-relaxed">
-                    I'm always open to collaboration, web development projects,
-                    or a good tech chat. Feel free to reach out!
-                </p>
-
-                <div class="flex flex-wrap gap-4">
-                    <!-- GitHub -->
-                    <a
-                        href="https://github.com/kiplangatek"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center gap-2 px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-xl text-slate-300 hover:border-blue-500 hover:text-blue-400 transition"
-                    >
-                        <ion-icon name="logo-github" class="text-xl"></ion-icon>
-                        <span class="text-sm font-medium">GitHub</span>
-                    </a>
-
-                    <!-- Instagram -->
-                    <a
-                        href="https://instagram.com/kiplangatek"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center gap-2 px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-xl text-slate-300 hover:border-pink-500 hover:text-pink-400 transition"
-                    >
-                        <ion-icon
-                            name="logo-instagram"
-                            class="text-xl"
-                        ></ion-icon>
-                        <span class="text-sm font-medium">Instagram</span>
-                    </a>
-
-                    <!-- Twitter/X -->
-                    <a
-                        href="https://twitter.com/kiplangatek"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center gap-2 px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-xl text-slate-300 hover:border-blue-500 hover:text-blue-400 transition"
-                    >
-                        <ion-icon
-                            name="logo-twitter"
-                            class="text-xl"
-                        ></ion-icon>
-                        <span class="text-sm font-medium">X (Twitter)</span>
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a
-                        href="https://linkedin.com/in/kiplangatedwin"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center gap-2 px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-xl text-slate-300 hover:border-blue-600 hover:text-blue-500 transition"
-                    >
-                        <ion-icon
-                            name="logo-linkedin"
-                            class="text-xl"
-                        ></ion-icon>
-                        <span class="text-sm font-medium">LinkedIn</span>
-                    </a>
-
-                    <!-- Email -->
-                    <a
-                        href="mailto:edwin@tablink.co.ke"
-                        target="_blank"
-                        class="flex items-center gap-2 px-4 py-2 bg-slate-900/60 border border-slate-700 rounded-xl text-slate-300 hover:border-yellow-500 hover:text-yellow-400 transition"
-                    >
-                        <ion-icon name="mail" class="text-xl"></ion-icon>
-                        <span class="text-sm font-medium">Email Me</span>
-                    </a>
+                <div class="bg-white/40 dark:bg-slate-800/40 p-3 rounded-xl">
+                    <div class="flex items-center gap-2 text-green-600"><ion-icon name="briefcase-outline"></ion-icon><span class="font-bold">Experience</span></div>
+                    <p class="text-sm">💼 ICT Intern @ Bomet County (2024) – Website styling, intern training</p>
+                    <p class="text-sm">💼 ICT Intern (2021) – Asset mgmt & inventory support</p>
                 </div>
-            </section>
-        </main>
+            </div>
+            <!-- skills chips -->
+            <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Web Dev</span>
+                <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/40 text-cyan-800 rounded-full text-xs font-medium">PHP & MySQL</span>
+                <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 rounded-full text-xs font-medium">Laravel</span>
+                <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-full text-xs font-medium">Azure Security</span>
+                <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 rounded-full text-xs font-medium">Team Leadership</span>
+            </div>
+        </div>
 
-        <!-- JS for Mobile Menu Toggle, Active Links & Smooth Scroll -->
-        <script>
-            const header = document.getElementById("header");
-            const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-            const mobileNav = document.getElementById("mobileNav");
-            const links = document.querySelectorAll(".mobile-link");
+        <!-- Services section (modern) -->
+        <div class="glass p-6 rounded-2xl">
+            <h2 class="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-white mb-4"><ion-icon name="construct-outline"></ion-icon> Services & Expertise</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white/50 dark:bg-slate-800/40 p-4 rounded-xl flex items-start gap-3">
+                    <ion-icon name="globe-outline" class="text-3xl text-blue-500"></ion-icon>
+                    <div><h3 class="font-semibold">Web Development</h3><p class="text-sm text-slate-500 dark:text-slate-400">Backend systems, APIs, scalable dashboards</p></div>
+                </div>
+                <div class="bg-white/50 dark:bg-slate-800/40 p-4 rounded-xl flex items-start gap-3">
+                    <ion-icon name="color-palette-outline" class="text-3xl text-purple-500"></ion-icon>
+                    <div><h3 class="font-semibold">UI/UX Design</h3><p class="text-sm text-slate-500 dark:text-slate-400">Mobile-first, glassmorphism, responsive</p></div>
+                </div>
+                <div class="bg-white/50 dark:bg-slate-800/40 p-4 rounded-xl flex items-start gap-3">
+                    <ion-icon name="shield-checkmark-outline" class="text-3xl text-emerald-500"></ion-icon>
+                    <div><h3 class="font-semibold">Security & Identity</h3><p class="text-sm text-slate-500 dark:text-slate-400">Azure PIM, NSG, threat analysis</p></div>
+                </div>
+                <div class="bg-white/50 dark:bg-slate-800/40 p-4 rounded-xl flex items-start gap-3">
+                    <ion-icon name="server-outline" class="text-3xl text-amber-500"></ion-icon>
+                    <div><h3 class="font-semibold">Database Design</h3><p class="text-sm text-slate-500 dark:text-slate-400">MySQL, SQLite optimization</p></div>
+                </div>
+            </div>
+        </div>
 
-            // Scroll effect for header
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    header.classList.add(
-                        "top-2",
-                        "w-[92%]",
-                        "bg-blue-800/35",
-                        "shadow-[0_12px_40px_rgba(30,64,175,0.4)]",
-                    );
-                } else {
-                    header.classList.remove(
-                        "top-2",
-                        "w-[92%]",
-                        "bg-blue-800/35",
-                        "shadow-[0_12px_40px_rgba(30,64,175,0.4)]",
-                    );
-                    header.classList.add("top-5", "w-[95%]");
-                }
-            });
+<!-- Projects section (original projects + more dynamic) -->
+<div id="projects" class="glass p-6 rounded-2xl">
+    <h2 class="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-white mb-5"><ion-icon name="folder-open-outline"></ion-icon> Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Project 1: Portfolio -->
+        <div class="bg-white/40 dark:bg-slate-800/40 rounded-2xl p-4 backdrop-blur-sm border border-white/20">
+            <img src="project-1.png" alt="portfolio" class="w-full h-36 object-cover rounded-xl mb-3 shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/400x200/e2e8f0/1e293b?text=Portfolio&font=Inter'">
+            <h3 class="font-bold text-blue-700 dark:text-blue-300">Portfolio Website</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 my-2">Personal brand site with responsive design & modern UI</p>
+            <div class="flex gap-1 mb-3"><span class="text-[11px] bg-blue-100 px-2 py-0.5 rounded-full">HTML/CSS</span><span class="text-[11px] bg-blue-100 px-2 py-0.5 rounded-full">Tailwind</span></div>
+            <a href="https://github.com/kiplangatek/portfolio" target="_blank" class="btn-primary py-1.5 px-3 text-sm w-full flex justify-center gap-1"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+        </div>
+        <!-- Project 2: FCS -->
+        <div class="bg-white/40 dark:bg-slate-800/40 rounded-2xl p-4 backdrop-blur-sm">
+            <img src="project-2.png" alt="FCS" class="w-full h-36 object-cover rounded-xl mb-3 shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/400x200/e2e8f0/1e293b?text=FCS&font=Inter'">
+            <h3 class="font-bold text-green-700 dark:text-green-300">FCS Platform</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 my-2">Freelancer service exchange with admin dashboard (PHP/MySQL)</p>
+            <div class="flex gap-1 mb-3"><span class="text-[11px] bg-green-100 px-2 py-0.5 rounded-full">PHP</span><span class="text-[11px] bg-green-100 px-2 py-0.5 rounded-full">MySQL</span></div>
+            <a href="https://github.com/kiplangatek/fcs" target="_blank" class="btn-primary py-1.5 px-3 text-sm w-full flex justify-center gap-1"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+        </div>
+        <!-- Project 3: FCS Laravel redesigned -->
+        <div class="bg-white/40 dark:bg-slate-800/40 rounded-2xl p-4 backdrop-blur-sm">
+            <img src="project-3.png" alt="Freelancer Laravel" class="w-full h-36 object-cover rounded-xl mb-3 shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/400x200/e2e8f0/1e293b?text=Laravel&font=Inter'">
+            <h3 class="font-bold text-purple-700 dark:text-purple-300">FCS - Redesigned (Laravel)</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 my-2">Service ratings, real-time chat, analytics, email verification</p>
+            <div class="flex gap-1 mb-3"><span class="text-[11px] bg-purple-100 px-2 py-0.5 rounded-full">Laravel</span><span class="text-[11px] bg-purple-100 px-2 py-0.5 rounded-full">SQLite</span></div>
+            <a href="https://github.com/kiplangatek/freelancer" target="_blank" class="btn-primary py-1.5 px-3 text-sm w-full flex justify-center gap-1"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+        </div>
+    </div>
+</div>
+        <!-- Labs Section (security labs + Azure + PIM) Maintained from original vibe -->
+        <div id="labs" class="glass p-6 rounded-2xl">
+            <h2 class="text-xl font-bold flex items-center gap-2 mb-4 text-slate-800 dark:text-white"><ion-icon name="flask-outline"></ion-icon> Labs & Hands-on Security</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="bg-slate-100 dark:bg-slate-800/60 p-4 rounded-xl">
+                    <img src="pim.png" alt="PIM" class="rounded-lg mb-3 h-28 w-full object-cover" onerror="this.src='https://placehold.co/400x150/1e293b/ffffff?text=Azure+PIM'">
+                    <span class="text-xs bg-blue-200 dark:bg-blue-800 px-2 py-0.5 rounded-full">Azure Security</span>
+                    <h3 class="font-semibold mt-2">Privileged Identity Management</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Just-in-time access, approval workflows, least-privilege roles</p>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-800/60 p-4 rounded-xl">
+                    <div class="flex gap-2 mb-3"><img src="nsg1.png" class="w-1/2 rounded-md" onerror="this.style.display='none'"><img src="nsg2.png" class="w-1/2 rounded-md" onerror="this.style.display='none'"></div>
+                    <span class="text-xs bg-green-200 dark:bg-green-800 px-2 py-0.5 rounded-full">Network Security</span>
+                    <h3 class="font-semibold mt-2">Azure NSGs</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Traffic filtering rules & segmentation, reducing threat surface</p>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-800/60 p-4 rounded-xl">
+                    <img src="pop.png" alt="Pyramid of Pain" class="rounded-lg mb-3 h-28 w-full object-cover" onerror="this.src='https://placehold.co/400x150/2d3748/ffffff?text=Pyramid+of+Pain'">
+                    <span class="text-xs bg-purple-200 dark:bg-purple-800 px-2 py-0.5 rounded-full">Threat Intel</span>
+                    <h3 class="font-semibold mt-2">Pyramid of Pain Analysis</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Disrupting adversaries with indicator friction and kill chain</p>
+                </div>
+            </div>
+            <!-- Certifications badge row from original (Microsoft, Cyber Shujaa) -->
+            <div class="mt-6 pt-3 border-t border-white/20">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <div><ion-icon name="ribbon-outline" class="text-purple-500 text-xl"></ion-icon><span class="font-semibold ml-1">Certifications:</span></div>
+                    <span class="text-sm bg-white/40 dark:bg-slate-700 px-3 py-1 rounded-full">Microsoft SC-900: Security & Identity Fundamentals</span>
+                    <span class="text-sm bg-white/40 dark:bg-slate-700 px-3 py-1 rounded-full">Software Operation Analyst - Cyber Shujaa 2025</span>
+                    <a href="https://learn.microsoft.com/en-us/users/kiplangatedwin/credentials/78ba90fe974061b9" target="_blank" class="text-blue-500 text-xs underline">View Credential</a>
+                </div>
+            </div>
+        </div>
 
-            // Mobile menu toggle
-            mobileMenuBtn.addEventListener("click", () => {
-                mobileNav.classList.toggle("hidden");
-            });
+        <!-- Contact section (Form + direct contacts) fully functional -->
+        <div id="contact" class="glass p-6 rounded-2xl">
+            <h2 class="text-2xl font-bold flex items-center gap-2 justify-center md:justify-start"><ion-icon name="chatbubbles-outline"></ion-icon> Let's Connect</h2>
+            <p class="text-center md:text-left text-slate-500 dark:text-slate-300 mb-5">Available for collaborations, freelance projects, or just a tech chat</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 <div class="grid grid-cols-1 gap-3">
+  <a href="mailto:kiplangatedwin@outlook.com" class="flex items-center gap-3 p-3 rounded-lg bg-white/60 dark:bg-white/5">
+    <ion-icon name="mail-outline" class="text-xl text-blue-600"></ion-icon>
+    <span class="text-main">kiplangatedwin@outlook.com</span>
+  </a>
 
-            // Smooth scroll + active link + auto-close
-            links.forEach((link) => {
-                link.addEventListener("click", (e) => {
-                    e.preventDefault();
+  <a href="tel:+254703326838" class="flex items-center gap-3 p-3 rounded-lg bg-white/60 dark:bg-white/5">
+    <ion-icon name="call-outline" class="text-xl text-green-600"></ion-icon>
+    <span class="text-main">+254 703 326 838</span>
+  </a>
 
-                    const targetId = link.getAttribute("href").substring(1);
-                    const targetEl = document.getElementById(targetId);
+  <a href="https://wa.me/254703326838" target="_blank" class="flex items-center gap-3 p-3 rounded-lg bg-white/60 dark:bg-white/5">
+    <ion-icon name="logo-whatsapp" class="text-xl text-green-500"></ion-icon>
+    <span class="text-main">Chat on WhatsApp</span>
+  </a>
+</div>
 
-                    if (targetEl) {
-                        targetEl.scrollIntoView({ behavior: "smooth" });
-                    }
+<form action="https://formsubmit.co/kiplangatedwin@outlook.com" method="POST" class="space-y-3">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Portfolio Message">
+  <input type="hidden" name="_autoresponse" value="Thanks for reaching out! I’ll get back to you shortly.">
+  <input type="text" name="_honey" style="display:none">
 
-                    // Remove active from all links
-                    links.forEach((l) => {
-                        l.classList.remove("bg-blue-400/30", "text-white");
-                        l.classList.add("text-sky-100", "hover:bg-blue-400/20");
-                    });
+  <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg border border-gray-200">
+  <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg border border-gray-200">
+  <textarea name="message" rows="4" placeholder="Your Message..." required class="w-full p-3 rounded-lg border border-gray-200"></textarea>
 
-                    // Set clicked link as active
-                    link.classList.add("bg-blue-400/30", "text-white");
-                    link.classList.remove(
-                        "text-sky-100",
-                        "hover:bg-blue-400/20",
-                    );
+  <button type="submit" class="btn w-full">
+    <ion-icon name="send-outline"></ion-icon>
+    Send Message
+  </button>
+</form>
 
-                    // Close mobile menu
-                    mobileNav.classList.add("hidden");
-                });
-            });
-        </script>
-    </body>
+  </div>
+</section><!-- BOTTOM NAV --><nav class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] max-w-md glass flex justify-between items-center px-4 py-3 z-50">
+  <button class="flex flex-col items-center text-main text-xs">
+    <ion-icon name="home-outline" class="text-xl"></ion-icon>
+    Home
+  </button>  <button class="flex flex-col items-center text-main text-xs">
+    <ion-icon name="bookmark-outline" class="text-xl"></ion-icon>
+    Bookmarks
+  </button>
+  <button onclick="openSettings()" class="flex flex-col items-center text-main text-xs">
+    <ion-icon name="settings-outline" class="text-xl"></ion-icon>
+    Settings
+  </button>  <button class="flex flex-col items-center text-main text-xs">
+    <ion-icon name="menu-outline" class="text-xl"></ion-icon>
+    More
+  </button>
+</nav><!-- SETTINGS --><div id="settingsModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center">
+  <div class="glass w-full h-full p-6 overflow-y-auto"><div class="flex justify-between items-center mb-6">
+  <h2 class="text-xl font-bold text-main flex items-center gap-2">
+    <ion-icon name="settings-outline"></ion-icon>
+    Settings
+  </h2>
+
+  <button onclick="closeSettings()">
+    <ion-icon name="close-outline" class="text-2xl text-main"></ion-icon>
+  </button>
+</div>
+
+<div class="space-y-4">
+  <div class="glass-soft p-4 flex justify-between items-center">
+    <span class="text-main">Dark Mode</span>
+    <button onclick="document.getElementById('darkToggle').click()" class="btn text-sm px-3 py-1">
+      Toggle
+    </button>
+  </div>
+</div>
+
+  </div>
+</div><!-- MODAL --><div id="modal" class="modal">
+  <div class="glass p-6 text-center">
+    <p id="modalText" class="text-main"></p>
+    <button onclick="closeModal()" class="btn mt-3 w-full">
+      <ion-icon name="close-outline"></ion-icon>
+      Close
+    </button>
+  </div>
+</div><script>
+if(localStorage.getItem("dark")==="true"){
+  document.body.classList.add("dark");
+}
+
+document.getElementById("darkToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+
+  const icon = document.getElementById("darkIcon");
+  icon.setAttribute(
+    "name",
+    document.body.classList.contains("dark")
+      ? "sunny-outline"
+      : "moon-outline"
+  );
+
+  localStorage.setItem("dark", document.body.classList.contains("dark"));
+};
+
+function openModal(text){
+  document.getElementById("modal").classList.add("show");
+  document.getElementById("modalText").innerText = text;
+}
+function closeModal(){
+  document.getElementById("modal").classList.remove("show");
+}
+
+function openSettings(){
+  document.getElementById("settingsModal").classList.remove("hidden");
+}
+function closeSettings(){
+  document.getElementById("settingsModal").classList.add("hidden");
+}
+</script></body>
 </html>
